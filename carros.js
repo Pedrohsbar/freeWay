@@ -1,20 +1,32 @@
-//carros
+//códigos para os carros
 
-let xCarro = 600;
-let yCarro = 45;
-
-let xCarro2 = 600;
-let yCarro2 = 96;
+let xCarros = [ 600, 600, 600 ]
+let yCarros = [ 40, 96, 150 ]
+let velocidadeCarros = [ 2, 2.5, 3 ]
 
 let tamanhoXCarro = 40;
 let tamanhoYCarro = 30;
 
 function mostraCarro(){
-    image ( imagemCarro, xCarro, yCarro, tamanhoXCarro, tamanhoYCarro );
-    image ( imagemCarro2, xCarro2, yCarro2, tamanhoXCarro, tamanhoYCarro );
+    for ( let i = 0; i < imagemCarros.length; i = i + 1 ){
+        image ( imagemCarros[i], xCarros[i], yCarros[i], tamanhoXCarro, tamanhoYCarro );
+    }
 }
 
 function movimentaCarro(){
-    xCarro -= 2;
-    xCarro2 -= 3;
+    for ( let i = 0; i < imagemCarros.length; i = i + 1 ){
+        xCarros[i] -= velocidadeCarros[i];
+    }
+}
+
+function voltaPosicaoInicialCarro(){
+    for ( let i = 0; i < imagemCarros.length; i = i + 1 ){
+        if ( passouTodaATela(xCarros[i])){
+            xCarros[i] = 600;
+        }
+    }
+}
+
+function passouTodaATela(xCarro){
+    return xCarro < - 50;
 }
